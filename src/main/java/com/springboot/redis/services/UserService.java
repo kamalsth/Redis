@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserService {
     private static final String HASH_KEY = "USER";
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String,Object> redisTemplate;
 
     public ResponseEntity<?> addUser(User user) {
         if (redisTemplate.opsForHash().hasKey(HASH_KEY, user.getUserId())) {
